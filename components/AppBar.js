@@ -5,23 +5,24 @@ import { StyleSheet } from 'react-native';
 export default class AppBar extends React.Component {
   render() {
     return (
-      <Appbar style={styles.bottom}>
-        <Appbar.Action icon="archive" onPress={this.props.onAllItems} />
-        <Appbar.Action icon="email" onPress={this.props.onUserItems} />
-        <Appbar.Action icon="label" onPress={this.props.onLogin} />
-        <Appbar.Action icon="delete" onPress={() =>console.log('Pressed archive')} />
-      </Appbar>
+      <Appbar.Header style={styles.bottom}>
+        <Appbar.Action icon="archive" onPress={this.props.onAllItems} color='#f1c40f' />
+        <Appbar.Action icon="email" onPress={this.props.onUserItems} 
+        accessibilityLabel='try'/>
+        <Appbar.Action icon="star-outline" onPress={this.props.onLogin} />
+        <Appbar.Action icon="star" onPress={() =>console.log('Pressed archive')} />
+      </Appbar.Header>
     );
   }
 }
 
 const styles = StyleSheet.create({
   bottom: {
-    position: 'realtive',
+    justifyContent:'space-evenly',
+    position: 'relative',
     left: 0,
     right: 0,
     top: 0,
-    paddingTop:25,
-    height:80,
+    height:50,
   },
 });

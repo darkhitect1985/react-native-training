@@ -20,12 +20,13 @@ import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
 
-const LoginScreen = props => {
+const UserItemsScreen = props => {
+  // console.log(props);
   return(
     <View style={styles.screen}>
-      <Text>Login screen</Text>
-      <Button title="Go Back to Start" onPress={() => {
-          props.navigation.navigate('UserItems');
+      <Text>Favourites</Text>
+      <Button title="Go Back somewhere" onPress={() => {
+          props.navigation.navigate('AllItems');
       }} />
     </View>
   
@@ -40,4 +41,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LoginScreen;
+export default UserItemsScreen;

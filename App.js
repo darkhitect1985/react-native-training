@@ -3,22 +3,33 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 import { Provider as PaperProvider } from 'react-native-paper';
 
-import AppBar from './components/AppBar';
+import { createStore, combineReducers } from 'redux';
+//Provider is used to "provide"  redux to all components within wraped main component
+import { Provider } from 'react-redux';
 
+import productsReducer from './store/reducers/products';
 
 
 
 import AppNavigator from "./navigation/AppNavigation";
 
+//in case of mutliple reducers we can combine them like this
+const rootReducer = combineReducers({
+  products: productsReducer
+});
 
+//use combined reducers to create store
+const store = createStore(rootReducer);
 
 
 export default function App() {
   return (
     
-    <PaperProvider style={styles.container}>
-        <AppNavigator/> 
-    </PaperProvider>
+    <Provider store={store}>
+      <PaperProvider style={styles.container}>
+          <AppNavigator/> 
+      </PaperProvider>
+    </Provider>
 
   );
 }

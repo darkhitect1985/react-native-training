@@ -25,7 +25,7 @@ const UserItemsScreen = props => {
       <Text>{selectedProduct.size}</Text>
       <Text>{selectedProduct.price}</Text>
       <Button title="this is item screen" onPress={() => {
-          props.navigation.navigate('Login');
+          props.navigation.navigate('AllItems');
       }} />
 
       <Image
