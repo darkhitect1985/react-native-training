@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -15,7 +15,7 @@ import HeaderButton from '../components/HeaderButton';
 
 
 
-import AllItemsScreen from '../screens/AllItems';
+import AllItemsScreen, {screenOptions} from '../screens/AllItems';
 import FavouritesScreen from '../screens/Favourites';
 import LoginScreen from '../screens/Login';
 import ItemScreen from '../screens/Item';
@@ -34,6 +34,8 @@ import Modal from '../components/Modal';
 const Stack = createStackNavigator();
 
 function ProductStack(props) {
+
+  console.log(screenOptions);
   return (
     <Stack.Navigator screenOptions={{
       headerRight: ({ color, size }) => (
@@ -47,14 +49,7 @@ function ProductStack(props) {
       <Stack.Screen name="AllItems" component={AllItemsScreen}/>
       <Stack.Screen name="Favourites" component={FavouritesScreen} />
       <Stack.Screen name="ToItem" component={ItemScreen} 
-     options={{
-      headerRight: ({ color, size }) => (
-        <MaterialCommunityIcons name="star-outline" color={'grey'} size={22}/>
-      ),
-      headerRightContainerStyle: {
-          marginRight: 20,
-      }
-    }}
+     options={screenOptions}
     />
       <Stack.Screen name="Login" component={LoginScreen} />
     </Stack.Navigator>
@@ -78,11 +73,7 @@ function FavouritesStack(props) {
     }}>
       <FavStack.Screen name="Favourites" component={FavouritesScreen} />
       <FavStack.Screen name="ToItem" component={ItemScreen} 
-     options={{
-      headerRight: ({ color, size }) => (
-        <MaterialCommunityIcons name="star-outline" color={'grey'} size={22}/>
-      ),
-    }}
+     options={screenOptions}
     />
       <FavStack.Screen name="Login" component={LoginScreen} />
     </FavStack.Navigator>
@@ -133,12 +124,12 @@ function MyDrawer() {
           <MaterialCommunityIcons name="home" color={color} size={size} focused={true}/>
         )
       }}/>
-      <Drawer.Screen name="MyProducts" component={ProductStack} ž
+      {/* <Drawer.Screen name="MyProducts" component={ProductStack} ž
       options= {{
         drawerIcon: ({ color, size, focused }) => (
           <MaterialCommunityIcons name="star" color={color} size={size} focused={true}/>
         )
-      }}/>
+      }}/> */}
       <Drawer.Screen name="Login" component={LoginScreen} 
       options= {{
         drawerIcon: ({ color, size, focused }) => (

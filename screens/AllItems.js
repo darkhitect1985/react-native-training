@@ -1,14 +1,16 @@
 import React from 'react';
-import { StyleSheet, ScrollView, Button ,View, FlatList} from 'react-native';
+import { StyleSheet, ScrollView, Button ,View, FlatList, Text,TouchableOpacity} from 'react-native';
+
+import { MaterialCommunityIcons } from 'react-native-vector-icons';
+
+
+
 
 
 import { PRODUCTS } from '../data/dummy-data';
 
 import CardItem from '../components/CardItem';
 import ProductItem from '../components/ProductItem';
-
-
-
 
 
 
@@ -38,16 +40,19 @@ import ProductItem from '../components/ProductItem';
 // export default AllItems;
 
 const AllItems = props => {
-  const renderProductItem = itemData => {
-    return (
 
+  const renderProductItem = itemData => {
+
+    return (
       <CardItem 
          title={itemData.item.title}
          image={itemData.item.imageUrl}
          description={itemData.item.description}
       onSelectProduct ={() => {
       props.navigation.navigate('ToItem', {
-      productId: itemData.item.id
+        productId: itemData.item.id,
+        productTitle: itemData.item.title,
+        //isFav: isFavorite     
       });
       }}/>
 
@@ -87,15 +92,27 @@ const AllItems = props => {
   );
 };
 
-// CategoryMealScreen.navigationOptions = navigationData => {
-//   const catId = navigationData.navigation.getParam('categoryId');
 
-//   const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
 
-//   return {
-//     headerTitle: selectedCategory.title
-//   };
-// };
+
+//this is new test
+export const  screenOptions = navData => {
+  const productTitle = navData.route.params.productTitle;
+  const isFavorite = navData.route.params.isFav;
+  return {
+    headerTitle: productTitle,
+    headerRight: ({ color, size }) => (
+      <TouchableOpacity>
+        <MaterialCommunityIcons name={isFavorite ? 'star' : 'star-outline'} color={'grey'} size={22}
+        onPress= {() => console.log('star pressed success')}
+        /> 
+      </TouchableOpacity>
+    ),
+
+}
+}
+
+
 
 const styles = StyleSheet.create({
   screen: {

@@ -25,7 +25,7 @@ const LoginScreen = props => {
     <View style={styles.screen}>
       <Text>Login screen</Text>
       <Button title="Go Back to Start" onPress={() => {
-          props.navigation.navigate('UserItems');
+          props.navigation.navigate('AllItems');
       }} />
     </View>
   

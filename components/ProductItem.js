@@ -46,7 +46,7 @@ const ProductItem = props => {
           <View style={{ ...styles.productRow, ...styles.productDetail }}>
             <Text>{props.description}</Text>
             <Text>{props.size}</Text>
-            <Text>{props.price} KM</Text>
+            <Text>{props.price}</Text>
           </View>
         </View>
       </TouchableOpacity>
